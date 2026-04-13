@@ -9,6 +9,7 @@
 | private_path | varchar | "/" | 個人dirパス |
 
 ## DB リレーション (仮)
+```mermaid
 erDiagram
     USERS ||--o{ PERMISSIONS : "has"
     USERS {
@@ -23,3 +24,4 @@ erDiagram
         varchar target_path
         boolean can_write
     }
+```
