@@ -2,7 +2,7 @@
 
 ## user or account テーブル (仮)
 | カラム | 型 | デフォルト値 | 説明 |
-| :--- | :--- | :--- |
+| :--- | :--- | :--- | :--- |
 | id | integer | - | ユーザーID (PK) |
 | username | varchar | "anonymous" | ユーザー名 |
 | password_hash | varchar | NULL | パスワードのハッシュ値 |
