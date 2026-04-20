@@ -11,13 +11,13 @@
 ## エンドポイント一覧 (仮)
 | メソッド | エンドポイント | 内容 |
 | :--- | :--- | :--- |
-| GET | `/dirlist` | ディレクトリファイル一覧を取得 |
+| GET | `/contents` | ディレクトリ・ファイル一覧を取得 |
 | POST | `/upload` | 特定のデータをアップロードする |
 | GET | `/download` | 特定のデータをダウンロードする |
 
 ## エンドポイント詳細
 - [api-fs-operations.md](api-fs-operations.md): ファイル操作系
-  - `/dirlist`
+  - `/contents`
     - GET: ファイル・ディレクトリ一覧取得
   - `/file`
     - GET: ファイルの詳細情報取得
@@ -58,7 +58,7 @@
 | パラメータ | 型 | 値の例 | 説明 |
 | :--- | :--- | :--- | :--- |
 | type | `string` | `https://localhost:8080/v1/errors/not-found` | エラー分類を示すURL |
-| instance | `string` | `/dirlist` | エラーが発生したエンドポイント |
+| instance | `string` | `/contents` | エラーが発生したエンドポイント |
 | status | `int` | `404` | HTTPステータス値 |
 | title | `string` | `"Not Found"` | エラーの概要 |
 | detail | `string` | `"指定されたファイルが存在しません"` | ユーザ向けのエラー詳細 |
@@ -68,7 +68,7 @@
 ```
 {
     "type": "https://localhost:8080/v1/errors/not-found",
-    "instance": "/dirlist",
+    "instance": "/contents",
     "status": 404,
     "title": "Not Found",
     "detail": "指定されたファイルが存在しません"
