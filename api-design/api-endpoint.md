@@ -49,3 +49,38 @@
 | 409 | `Conflict`: 競合 | 登録・更新しようとしたデータが既存であった場合 |
 | 500 | `Internal Server Error`: サーバ処理でのエラー発生時 | 処理中にサーバが通信不良で切れた場合 |
 
+### レスポンスボディ
+#### 正常
+
+#### エラー ([RFC 9457](https://tex2e.github.io/rfc-translater/html/rfc9457.html) 準拠)
+エラー発生時は `application/problem+json` 形式で詳細を返します。
+
+| パラメータ | 型 | 値の例 | 説明 |
+| :--- | :--- | :--- | :--- |
+| type | `string` | `https://localhost:8080/v1/errors/not-found` | エラー分類を示すURL |
+| instance | `string` | `/dirlist` | エラーが発生したエンドポイント |
+| status | `int` | `404` | HTTPステータス値 |
+| title | `string` | `"Not Found"` | エラーの概要 |
+| detail | `string` | `"指定されたファイルが存在しません"` | ユーザ向けのエラー詳細 |
+
+
+#### サンプル
+```
+{
+    "type": "https://localhost:8080/v1/errors/not-found",
+    "instance": "/dirlist",
+    "status": 404,
+    "title": "Not Found",
+    "detail": "指定されたファイルが存在しません"
+}
+```
+
+#### エラー定義一覧 (type 一覧)
+各エラーの type に指定する識別子と、その発生条件を定義します。
+
+| type(識別URL) | title | 発生条件 |
+| :--- | :--- | :--- |
+| `not-found` | `Not Found` | 指定されたパスにファイルやディレクトリが存在しない |
+| `permission-denided` | `Forbidden` | 対象へのアクセス権が存在しない |
+| `invalid-parameter` | `Bad Request` | リクエストパラメータの形式が不正 |
+| `server-error` | `Internal Server Error` | サーバ側で予期せぬエラーが発生した |
