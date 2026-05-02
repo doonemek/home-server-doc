@@ -33,10 +33,14 @@
 | 404 | `Not Found`: データが見つからない | 存在しないエンドポイントやデータにアクセスしようとした場合 |
 | 405 | `Method Not Allowed`: 許可されていないメソッドでリクエスト実施 | 対象パスで許可されていないメソッドでリクエストした場合 |
 | 409 | `Conflict`: 競合 | 登録・更新しようとしたデータが既存であった場合 |
+| 413 | `Payload Too Large`: サイズ超過 | 登録しようとしたデータのサイズが規定以上だった場合 |
+| 415 | `Unsupported Media Type`: 許可されていないファイル形式 | ブラックリストにあるファイル形式の場合 |
 | 500 | `Internal Server Error`: サーバ処理でのエラー発生時 | 処理中にサーバが通信不良で切れた場合 |
 
 ### レスポンスボディ
 #### 正常
+各種エンドポイントに準ずる
+- [api-transfer.md](api-transfer.md)
 
 #### エラー ([RFC 9457](https://tex2e.github.io/rfc-translater/html/rfc9457.html) 準拠)
 エラー発生時は `application/problem+json` 形式で詳細を返します。
